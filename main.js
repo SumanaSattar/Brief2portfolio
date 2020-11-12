@@ -11,6 +11,9 @@ const bodyBg=document.querySelector("body");
 const container=document.querySelector(".container");
 const aboutText=document.querySelector(".aboutText");
 const homeIcon=document.querySelector(".homeIcon");
+const workPageC=document.querySelector(".workPage");
+const workTitle=document.querySelector(".workTitle");
+const contactPageInfo=document.querySelector(".contactPageInfo");
 
 aboutCard.addEventListener('click',aboutPage);
 homeIcon.addEventListener('click',homePage);
@@ -47,8 +50,9 @@ function workPage() {
             workPageTimeline
                         .fromTo(aboutCard,1,{scale:0,autoAlpha:0},{scale:1,autoAlpha:1})
                         .fromTo(contactCard,1,{scale:0,autoAlpha:0},{scale:1,autoAlpha:1},'-=1')
-                        .fromTo(aboutText,1,{scale:0,autoAlpha:0},{scale:1,autoAlpha:1},'-=1')
+                        .fromTo(workPageC,1,{scale:0,autoAlpha:0},{scale:1,autoAlpha:1},'-=1')
                         .fromTo(homeIcon,1,{scale:0,autoAlpha:0},{scale:1,autoAlpha:1},'-=1')
+                        .fromTo(workTitle,1,{scale:0,autoAlpha:0},{scale:1,autoAlpha:1},'-=1')
                         ;
 
     aboutCard.classList.add("aboutCardAfterClick");
@@ -64,7 +68,7 @@ function contactPage() {
             contactPageTimeline
                         .fromTo(aboutCard,1,{scale:0,autoAlpha:0},{scale:1,autoAlpha:1})
                         .fromTo(workCard,1,{scale:0,autoAlpha:0},{scale:1,autoAlpha:1},'-=1')
-                        .fromTo(aboutText,1,{scale:0,autoAlpha:0},{scale:1,autoAlpha:1},'-=1')
+                        .fromTo(contactPageInfo,1,{scale:0,autoAlpha:0},{scale:1,autoAlpha:1},'-=1')
                         .fromTo(homeIcon,1,{scale:0,autoAlpha:0},{scale:1,autoAlpha:1},'-=1')
                         ;
 
@@ -72,28 +76,6 @@ function contactPage() {
     workCard.classList.add("workCardAfterClick");
 return contactPageTimeline;
 }
-
-function arrangingCards(cards) {
-   // var cardsTimelineAfterClick = new TimelineMax();
-
-    if (cards=="aboutCard") {
-        var cardsTimelineAfterClick = new TimelineMax();
-        cardsTimelineAfterClick
-                          .fromTo(workCard,1,{scale:0,autoAlpha:0},{scale:1,autoAlpha:1},'-=1')
-                          .fromTo(contactCard,1,{scale:0,autoAlpha:0},{scale:1,autoAlpha:1},'-=1')
-                          .fromTo(aboutText,1,{scale:0,autoAlpha:0},{scale:1,autoAlpha:1},'-=1')
-                          .fromTo(homeIcon,1,{scale:0,autoAlpha:0},{scale:1,autoAlpha:1},'-=1')
-                          ;
-        return cardsTimelineAfterClick;
-    }
-   
-    aboutCard.classList.add("aboutCardAfterClick");
-    workCard.classList.add("workCardAfterClick");
-    contactCard.classList.add("contactCardAfterClick");
-    
-    
-}
-
 
 
 function clearCanvasAll() {
@@ -112,6 +94,9 @@ function clearCanvasAll() {
                 .set(homeIcon,{autoAlpha:0})
                 .set(bigCircleBg,{autoAlpha:0})
                 .set(smallCircleBg,{autoAlpha:0})
+                .set(workPageC,{autoAlpha:0})
+                .set(workTitle,{autoAlpha:0})
+                .set(contactPageInfo,{autoAlpha:0})
                 .set(frontEndDeveloper,{autoAlpha:0,onComplete:showCanvas})
                 .set(aboutText,{autoAlpha:0})
                 

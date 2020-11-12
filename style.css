@@ -23,6 +23,11 @@ body{
     
 
 }
+.contactPageInfo {
+    grid-column: 2 / span 5;
+    grid-row: 2 / span 2;
+    justify-self: center;
+}
 .bigCircle{
     grid-column: 4/ span 3;
     grid-row: 1 / span 2;
@@ -38,28 +43,39 @@ body{
     width:10rem;
 
 }
+.workPage {
+    display:flex;
+    grid-column:3 / span 4;
+    grid-row-start:2 ;
+    justify-self: center;
+    align-self: center;
+
+}
 
 .aboutCard {
     grid-column-start: 3;
     grid-row-start: 2;
     z-index: 2;
+    cursor: grab;
 }
 .workCard {
     grid-column-start: 4;
     align-self: end;
     grid-row-start: 2;
     z-index: 2;
+    cursor: grab;
 }
 .contactCard {
     grid-column-start: 5;
     grid-row-start: 2;
     z-index: 2;
+    cursor: grab;
 }
 .profilePic {
     
     grid-column-start: 7;
     grid-row-end: span 3;
-    z-index: 2;
+    z-index: 5;
     
 }
 #socialMediaIcons{
@@ -71,10 +87,18 @@ body{
     z-index: 2;
 }
 .intoText {
-    grid-column-start: 4;
-    grid-column-end: span 2;
+    grid-column: 4 / span 2;
+    grid-row-start: 3;
     color:#E98074;
+    z-index:5;
 }
+.form-inline {  
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    grid-column: 2 /span 4;
+    grid-row-start: 1;
+  }
 .intoText > h1 >span{
     color:#E85A4F;
     font-size: 3rem;
@@ -154,7 +178,89 @@ body{
       justify-self: start;
       padding:1.5rem;
       z-index:2;
+      cursor: grab;
       
+  }
+  .title {
+    grid-column-start: 4;
+    grid-row-start: 1;
+    align-self:end;
+    color:#E85A4F;
+    
+  }
+
+
+.flip-card {
+    background-color: transparent;
+    width: 150px;
+    height: 100px;
+    perspective: 1000px; 
+    margin-right:1rem;
+  }
+  
+  
+  .flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+    
+  }
+  
+  
+  .flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+  }
+  
+  
+  .flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden; 
+    backface-visibility: hidden;
+  }
+  
+
+  .flip-card-front {
+    background-color: #bbb;
+    color: black;
+  }
+  
+  
+  .flip-card-back {
+    background-color:#4d4d4b;
+    color: white;
+    transform: rotateY(180deg);
+    padding:1rem;
+    
+  }
+
+  
+  .form-inline label {
+    margin: 5px 10px 5px 0;
+  }
+  
+  .form-inline input {
+    vertical-align: middle;
+    margin: 5px 10px 5px 0;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+  }
+  
+  .form-inline button {
+    padding: 10px 20px;
+    background-color: #E98074;
+    border: 1px solid #ddd;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .form-inline button:hover {
+    background-color: #E85A4F;
   }
   
   
