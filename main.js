@@ -14,6 +14,8 @@ const homeIcon=document.querySelector(".homeIcon");
 
 aboutCard.addEventListener('click',aboutPage);
 homeIcon.addEventListener('click',homePage);
+workCard.addEventListener('click',workPage);
+contactCard.addEventListener('click',contactPage);
 
 function homePage() {
     aboutCard.classList.remove("aboutCardAfterClick");
@@ -23,32 +25,82 @@ function homePage() {
 }
 
 function aboutPage() {
-    clearCanvas();
-    arrangingCards();
+    var aboutPageTimeline = new TimelineMax();
+
+               clearCanvasAll();
+        aboutPageTimeline
+                        .fromTo(workCard,1,{scale:0,autoAlpha:0},{scale:1,autoAlpha:1})
+                        .fromTo(contactCard,1,{scale:0,autoAlpha:0},{scale:1,autoAlpha:1},'-=1')
+                        .fromTo(aboutText,1,{scale:0,autoAlpha:0},{scale:1,autoAlpha:1},'-=1')
+                        .fromTo(homeIcon,1,{scale:0,autoAlpha:0},{scale:1,autoAlpha:1},'-=1')
+                        ;
     
-    
+    workCard.classList.add("workCardAfterClick");
+    contactCard.classList.add("contactCardAfterClick");
+    return aboutPageTimeline;
+}
+
+function workPage() {
+    var workPageTimeline = new TimelineMax();
+
+    clearCanvasAll();
+            workPageTimeline
+                        .fromTo(aboutCard,1,{scale:0,autoAlpha:0},{scale:1,autoAlpha:1})
+                        .fromTo(contactCard,1,{scale:0,autoAlpha:0},{scale:1,autoAlpha:1},'-=1')
+                        .fromTo(aboutText,1,{scale:0,autoAlpha:0},{scale:1,autoAlpha:1},'-=1')
+                        .fromTo(homeIcon,1,{scale:0,autoAlpha:0},{scale:1,autoAlpha:1},'-=1')
+                        ;
+
+    aboutCard.classList.add("aboutCardAfterClick");
+    contactCard.classList.add("contactCardAfterClick");
+return workPageTimeline;
 
 }
 
-function arrangingCards() {
-    var cardsTimelineAfterClick = new TimelineMax();
-    cardsTimelineAfterClick
-                          .set(aboutCard,{autoAlpha:1})
-                          .set(workCard,{autoAlpha:1})
-                          .set(contactCard,{autoAlpha:1})
-                          .set(aboutText,{autoAlpha:1})
-                          .set(homeIcon,{autoAlpha:1})
+function contactPage() {
+    var contactPageTimeline = new TimelineMax();
+
+    clearCanvasAll();
+            contactPageTimeline
+                        .fromTo(aboutCard,1,{scale:0,autoAlpha:0},{scale:1,autoAlpha:1})
+                        .fromTo(workCard,1,{scale:0,autoAlpha:0},{scale:1,autoAlpha:1},'-=1')
+                        .fromTo(aboutText,1,{scale:0,autoAlpha:0},{scale:1,autoAlpha:1},'-=1')
+                        .fromTo(homeIcon,1,{scale:0,autoAlpha:0},{scale:1,autoAlpha:1},'-=1')
+                        ;
+
+    aboutCard.classList.add("aboutCardAfterClick");
+    workCard.classList.add("workCardAfterClick");
+return contactPageTimeline;
+}
+
+function arrangingCards(cards) {
+   // var cardsTimelineAfterClick = new TimelineMax();
+
+    if (cards=="aboutCard") {
+        var cardsTimelineAfterClick = new TimelineMax();
+        cardsTimelineAfterClick
+                          .fromTo(workCard,1,{scale:0,autoAlpha:0},{scale:1,autoAlpha:1},'-=1')
+                          .fromTo(contactCard,1,{scale:0,autoAlpha:0},{scale:1,autoAlpha:1},'-=1')
+                          .fromTo(aboutText,1,{scale:0,autoAlpha:0},{scale:1,autoAlpha:1},'-=1')
+                          .fromTo(homeIcon,1,{scale:0,autoAlpha:0},{scale:1,autoAlpha:1},'-=1')
                           ;
+        return cardsTimelineAfterClick;
+    }
+   
     aboutCard.classList.add("aboutCardAfterClick");
     workCard.classList.add("workCardAfterClick");
     contactCard.classList.add("contactCardAfterClick");
     
+    
 }
 
-function clearCanvas() {
-    var clearTimeline= new TimelineMax();
 
+
+function clearCanvasAll() {
+    var clearTimeline= new TimelineMax();
+        
     clearTimeline
+               
                 .set(socialMediaIcons,{x:-20,autoAlpha:0})
                 .set(aboutCard,{autoAlpha:0})
                 .set(workCard,{autoAlpha:0})
@@ -58,18 +110,6 @@ function clearCanvas() {
                 .set(frontEndDeveloper,{autoAlpha:0})
                 .set(aboutText,{autoAlpha:0})
                 .set(homeIcon,{autoAlpha:0})
-                ;
-        return clearTimeline;
-    
-}
-
-function clearCanvasAll() {
-    var clearTimeline= new TimelineMax();
-         
-           clearCanvas();
-
-    clearTimeline
-               
                 .set(bigCircleBg,{autoAlpha:0})
                 .set(smallCircleBg,{autoAlpha:0})
                 .set(frontEndDeveloper,{autoAlpha:0,onComplete:showCanvas})
@@ -77,9 +117,12 @@ function clearCanvasAll() {
                 
                 ;
             
-               function showCanvas() {
-                container.style.display="block";
-            }
+               
+     function showCanvas() {
+                
+            container.style.display="block";
+            
+        }
             
 
     return clearTimeline;
